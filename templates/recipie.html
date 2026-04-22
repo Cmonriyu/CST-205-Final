@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ meal.strMeal }}</title>
+</head>
+<body>
+
+    <h1>{{ meal.strMeal }}</h1>
+
+    <h3>Culture: {{ meal.strArea }}</h3>
+    <h3>Category: {{ meal.strCategory }}</h3>
+
+    <img src="{{ meal.strMealThumb }}" width="300">
+
+    <h2>Instructions</h2>
+    <p>{{ meal.strInstructions }}</p>
+
+    {% if meal.strYoutube %}
+        <p>
+            <a href="{{ meal.strYoutube }}">Watch Recipe Video</a>
+        </p>
+    {% endif %}
+
+    {% if meal.strSource %}
+        <p>
+            <a href="{{ meal.strSource }}">Recipe Source</a>
+        </p>
+    {% endif %}
+
+    <p>
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </p>
+
+</body>
+</html>

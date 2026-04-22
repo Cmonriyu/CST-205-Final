@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Culture and Food Finder</title>
+</head>
+<body>
+
+    <h1>Culture and Food Finder</h1>
+
+    <p>Choose a culture to see foods from that area.</p>
+
+    <img src="{{ url_for('static', filename='food.jpg') }}" width="300">
+
+    <form action="/foods" method="post">
+        <p>
+            Select a culture:
+            <select name="area">
+                {% for area in areas %}
+                    <option value="{{ area }}">{{ area }}</option>
+                {% endfor %}
+            </select>
+        </p>
+
+        <p>
+            <input type="submit" value="Show Foods">
+        </p>
+    </form>
+
+</body>
+</html>

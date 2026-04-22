@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Foods from {{ area }}</title>
+</head>
+<body>
+
+    <h1>Foods from {{ area }}</h1>
+
+    <p>Choose a meal to see recipe details.</p>
+
+    {% for meal in meals %}
+        <div>
+            <h3>{{ meal.strMeal }}</h3>
+
+            <img src="{{ meal.strMealThumb }}" width="250">
+
+            <p>
+                <a href="{{ url_for('recipe', meal_id=meal.idMeal) }}">
+                    View Recipe
+                </a>
+            </p>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <p>
+        <a href="{{ url_for('home') }}">Go Back</a>
+    </p>
+
+</body>
+</html>
