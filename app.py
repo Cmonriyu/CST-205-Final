@@ -40,6 +40,7 @@ def recipe(meal_id):
 @app.route("/random")
 def pick():
     areas = get_areas()
+    # selects a random area
     area = random.choice(areas)
     meals = get_meals_by_area(area)
     chosen_meals = meals[:5]
