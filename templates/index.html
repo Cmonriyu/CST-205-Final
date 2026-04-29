@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Culture and Food Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/wheel.css') }}">
 </head>
 <body>
 
@@ -9,16 +11,20 @@
 
     <p>Choose a culture to see foods from that area.</p>
 
-    <img src="{{ url_for('static', filename='food.jpg') }}" width="300">
+    <img src="{{ url_for('static', filename='images/food.jpg') }}" width="300">
 
     <form action="/foods" method="post">
         <p>
             Select a culture:
-            <select name="area">
-                {% for area in areas %}
-                    <option value="{{ area }}">{{ area }}</option>
-                {% endfor %}
-            </select>
+            <div id="wheel-container">
+                <div id="wheel">
+                    {% for area in areas %}
+                        <div class="option" data-value="{{ area }}">{{ area }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <button type="button" id="spin">Spin Random</button>
+            <input type="hidden" name="area" id="selected-area">
         </p>
 
         <p>
@@ -26,5 +32,6 @@
         </p>
     </form>
 
+    <script src="{{ url_for('static', filename='js/wheel.js') }}"></script>
 </body>
 </html>
