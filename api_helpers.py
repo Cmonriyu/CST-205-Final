@@ -41,3 +41,12 @@ def get_meal_details(meal_id):
         return data["meals"][0]
 
     return None
+
+def areas_with_meals():
+    areasList = get_areas()
+    areasWithMeals = []
+    for area in areasList:
+        areaMeals = get_meals_by_area(area)
+        if areaMeals:
+            areasWithMeals.append(area)
+    return areasWithMeals
