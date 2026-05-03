@@ -11,7 +11,13 @@
     <h3>Category: {{ meal.strCategory }}</h3>
 
     <img src="{{ meal.strMealThumb }}" width="300">
+    <h2>Ingredients</h2>
 
+    {%for index in range (1,21)%}
+        {%if meal['strIngredient' ~ index] %}
+            <p>{{ meal['strIngredient' ~ index] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ meal['strMeasure' ~ index] }}</p>
+        {% endif %}
+    {% endfor %}
     <h2>Instructions</h2>
     <p>{{ meal.strInstructions }}</p>
 

@@ -3,7 +3,7 @@
 # Culture and Food Recipe Finder
 
 from flask import Flask, render_template, request, url_for
-from api_helpers import get_areas, get_meals_by_area, get_meal_details
+from api_helpers import get_areas, get_meals_by_area, get_meal_details, areas_with_meals
 
 app = Flask(__name__)
 

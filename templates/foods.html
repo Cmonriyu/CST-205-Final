@@ -6,24 +6,28 @@
 <body>
 
     <h1>Foods from {{ area }}</h1>
+    {%if meals %}
+        <p>Choose a meal to see recipe details.</p>
+    
+        {% for meal in meals %}
+            <div>
+                <h3>{{ meal.strMeal }}</h3>
 
-    <p>Choose a meal to see recipe details.</p>
+                <img src="{{ meal.strMealThumb }}" width="250">
 
-    {% for meal in meals %}
-        <div>
-            <h3>{{ meal.strMeal }}</h3>
+                <p>
+                    <a href="{{ url_for('recipe', meal_id=meal.idMeal) }}">
+                        View Recipe
+                    </a>
+                </p>
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No meals available</p>
+    {% endif %}
 
-            <img src="{{ meal.strMealThumb }}" width="250">
-
-            <p>
-                <a href="{{ url_for('recipe', meal_id=meal.idMeal) }}">
-                    View Recipe
-                </a>
-            </p>
-        </div>
-        <hr>
-    {% endfor %}
-
+    
     <p>
         <a href="{{ url_for('home') }}">Go Back</a>
     </p>
