@@ -50,3 +50,34 @@ def areas_with_meals():
         if areaMeals:
             areasWithMeals.append(area)
     return areasWithMeals
+
+def get_meal_instructions(meal):
+    lines = [line for line in meal["strInstructions"].splitlines() if line.strip()]
+    count = 1
+    
+    newlines = []
+
+    for line in lines:
+        clean = line.lower().strip()
+
+        if clean.startswith("step"):
+            continue
+
+        newlines.append(f"Step {count}.")
+        newlines.append(line)
+
+        count += 1
+
+
+
+#     # if line[0] == "1" or line[0].lower() == "step 1":
+
+    # for line in lines:
+    #     if line.lower().strip() == str(count) or line.lower().strip() == "step " + str(count):
+    #         line = "Step " + str(count) + ". new"
+    #         count += 1
+    #     else:
+    #         line = f"Step {count}. {line}"
+    #         count += 1
+
+    return newlines

@@ -19,7 +19,10 @@
         {% endif %}
     {% endfor %}
     <h2>Instructions</h2>
-    <p>{{ meal.strInstructions }}</p>
+
+    {% for line in instructions %}
+        <p>{{ line }}</p>
+    {% endfor %}
 
     {% if meal.strYoutube %}
         <p>
