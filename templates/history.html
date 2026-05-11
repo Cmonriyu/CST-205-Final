@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Viewed Recipe History</title>
+
+</head>
+<body>
+
+    <h1>Viewed Recipes</h1>
+
+    <p>
+        <ul>
+            {% for key, value in history.items() %}
+                <a href="{{url_for('recipe', meal_id=key)}}">{{value.strMeal}}</a>
+                <br>
+            {% endfor %}
+        </ul>
+    </p>
+
+    
+</body>
+</html>

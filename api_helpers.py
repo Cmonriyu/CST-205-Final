@@ -6,6 +6,7 @@ import requests
 AREA_LIST_URL = "https://www.themealdb.com/api/json/v1/1/list.php?a=list"
 FILTER_BY_AREA_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?a="
 LOOKUP_MEAL_URL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="
+history = {}
 
 
 def get_areas():
@@ -67,6 +68,13 @@ def get_meal_instructions(meal):
         newlines.append(line)
 
         count += 1
+
+def add_history(id, meal):
+    if id not in history:
+        history[id]=meal
+
+def get_history():
+    return history
 
 
 

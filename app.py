@@ -3,7 +3,7 @@
 # Culture and Food Recipe Finder
 
 from flask import Flask, render_template, request, url_for
-from api_helpers import get_areas, get_meals_by_area, get_meal_details, areas_with_meals, get_meal_instructions
+from api_helpers import get_areas, get_meals_by_area, get_meal_details, areas_with_meals, get_meal_instructions, add_history, get_history
 
 app = Flask(__name__)
 
@@ -34,8 +34,13 @@ def recipe(meal_id):
     meal = get_meal_details(meal_id)
     mealinstr = get_meal_instructions(meal)
     print(mealinstr)
+    add_history(meal_id, meal)
     return render_template("recipie.html", meal=meal, instructions = mealinstr)
 
+@app.route("/history")
+def history():
+    his = get_history()
+    return render_template("history.html", history=his)
 
 if __name__ == "__main__":
     app.run(debug=True)
