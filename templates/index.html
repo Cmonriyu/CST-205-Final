@@ -4,6 +4,7 @@
     <title>Culture and Food Finder</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/wheel.css') }}">
+    {{ bootstrap.load_css() }}
 </head>
 <body>
 
@@ -32,6 +33,11 @@
             <input type="submit" value="Show Foods">
         </p>
     </form>
+    <br>
+
+    <a href="{{url_for('history')}}" class="btn btn-info"
+    style="color:white; background-color: #007bff; border-color: #007bff;"
+    >View history</a>
 
     <script src="{{ url_for('static', filename='js/wheel.js') }}"></script>
 </body>

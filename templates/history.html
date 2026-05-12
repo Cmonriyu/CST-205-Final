@@ -2,19 +2,62 @@
 <html>
 <head>
     <title>Viewed Recipe History</title>
-
+    {{ bootstrap.load_css() }}
+    <style>
+        h1 {text-align: center;
+            padding: 25px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: aliceblue;
+        }
+        h3{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: x-large;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: burlywood;">
 
     <h1>Viewed Recipes</h1>
 
     <p>
         <ul>
             {% for key, value in history.items() %}
-                <a href="{{url_for('recipe', meal_id=key)}}">{{value.strMeal}}</a>
-                <br>
+                <div class="container mb-4">
+                    <div class="card mt-4">
+                        <div class="card-body" style="background-color: aliceblue;">
+                            <div style="display: inline-block">
+                                <img src="{{ value.strMealThumb }}" class="img-thumbnail" width="50%"/>
+                            </div>
+
+                            <span style="display: inline-block; text-align: center;">
+                                <a href="{{url_for('recipe', meal_id=key)}}" 
+                                style="font-family: 'Courier New', Courier, monospace;
+                                font-size: x-large;"
+                                >{{value.strMeal}}</a>
+                                <h3>Culture: {{ value.strArea }}</h3>
+                                <h3>Category: {{ value.strCategory }}</h3>
+                            </span>
+                            
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                
             {% endfor %}
         </ul>
+    </p>
+    <p>
+        <div class="container mb-4">
+            <div class="card mt-4">
+                <div class="card-body"  style="background-color: aliceblue;">
+                    <a href="{{url_for('home')}}" style="font-family: 'Courier New', Courier, monospace;
+                    background-color: burlywood; border-color: burlywood;"
+                    class="btn btn-info"
+                    >Go Back</a>
+                    <br>
+                </div>
+            </div>
+        </div>
     </p>
 
     

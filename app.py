@@ -4,8 +4,10 @@
 
 from flask import Flask, render_template, request, url_for
 from api_helpers import get_areas, get_meals_by_area, get_meal_details, areas_with_meals, get_meal_instructions, add_history, get_history
+from flask_bootstrap import Bootstrap5
 
 app = Flask(__name__)
+bootstrap = Bootstrap5(app)
 
 
 @app.route("/")
