@@ -11,7 +11,7 @@
 
     <p>Choose a culture to see foods from that area.</p>
 
-    <img src="{{ url_for('static', filename='images/food1.jpg') }}" width="300">
+    <img src="{{ url_for('static', filename='images/food1.jpg') }}" width="900">
 
     <form action="/foods" method="post">
         <p>
@@ -25,12 +25,15 @@
             </div>
             <button type="button" id="spin">Spin Random</button>
             <input type="hidden" name="area" id="selected-area">
-                    
         </p>
 
         <p>
             <input type="submit" value="Show Foods">
         </p>
+        <p>
+            <a href="{{ url_for('history') }}" class="btn">View History</a>
+        </p>        
+        
     </form>
 
     <script src="{{ url_for('static', filename='js/wheel.js') }}"></script>

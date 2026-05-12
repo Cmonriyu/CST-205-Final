@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const options = document.querySelectorAll('.option');
     const selectedArea = document.getElementById('selected-area');
     const spinButton = document.getElementById('spin');
+    let valid = ['Algerian', 'Australian', 'Canadian', 'Chinese', 'Croatian', 'Egyptian', 'Greek', 'Irish', 'Italian', 'Jamaican', 'Japanese', 'Kenyan', 'Malaysian', 'Mexican', 'Moroccan', 'Filipino', 'Polish', 'Portuguese', 'Russian', 'Saudi Arabian', 'Spanish', 'Syrian', 'Thai', 'Tunisian', 'Turkish', 'Ukrainian', 'British', 'Uruguayan', 'Vietnamese'];
 
     // Function to get the currently selected option
     function getSelectedOption() {
@@ -63,8 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Spin random
     spinButton.addEventListener('click', function() {
-        const randomIndex = Math.floor(Math.random() * options.length);
-        const randomOption = options[randomIndex];
+        let randomOption;
+        do {
+            const randomIndex = Math.floor(Math.random() * options.length);
+            randomOption = options[randomIndex];
+        } while (!valid.includes(randomOption.dataset.value));
         const container = document.getElementById('wheel-container');
         const containerHeight = container.offsetHeight;
         const optionHeight = randomOption.offsetHeight;
