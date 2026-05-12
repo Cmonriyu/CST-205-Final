@@ -3,8 +3,8 @@
 # Culture and Food Recipe Finder
 
 from flask import Flask, render_template, request, url_for
-from api_helpers import get_areas, get_meals_by_area, get_meal_details, areas_with_meals, get_meal_instructions, add_history, get_history
 from flask_bootstrap import Bootstrap5
+from api_helpers import get_areas, get_meals_by_area, get_meal_details, areas_with_meals, get_meal_instructions, add_history, get_history, get_meals_by_catagory
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
@@ -13,9 +13,8 @@ bootstrap = Bootstrap5(app)
 @app.route("/")
 def home():
     areas = get_areas()
-    print(f"DEBUG: areas = {areas}")
     return render_template("index.html", areas=areas)
-
+ 
 
 @app.route("/foods", methods=["GET", "POST"])
 def foods():
@@ -37,12 +36,18 @@ def recipe(meal_id):
     mealinstr = get_meal_instructions(meal)
     print(mealinstr)
     add_history(meal_id, meal)
-    return render_template("recipie.html", meal=meal, instructions = mealinstr)
+    print(get_meal_instructions(meal))
+    return render_template("recipie.html", meal=meal, instructions = get_meal_instructions(meal))
 
 @app.route("/history")
 def history():
     his = get_history()
     return render_template("history.html", history=his)
+
+@app.route("/catagory")
+def catagory(meal_id):
+    catlist = get_meals_by_catagory(meal_id)
+    return render_template("catagory.html", catlist = catlist)
 
 if __name__ == "__main__":
     app.run(debug=True)

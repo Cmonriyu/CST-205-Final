@@ -69,6 +69,8 @@ def get_meal_instructions(meal):
 
         count += 1
 
+    return newlines
+
 def add_history(id, meal):
     if id not in history:
         history[id]=meal
@@ -89,3 +91,9 @@ def get_history():
     #         count += 1
 
     return newlines
+
+def get_meals_by_catagory(meal):
+
+    catlist = []
+
+    return catlist
