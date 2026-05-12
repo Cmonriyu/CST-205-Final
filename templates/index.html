@@ -32,15 +32,13 @@
             <input type="submit" value="Show Foods">
         </p>
         <p>
-            <a href="{{ url_for('history') }}" class="btn">View History</a>
+            <a href="{{url_for('history')}}" class="btn btn-info"
+            style="color:white; background-color: #007bff; border-color: #007bff;"
+            >View history</a>
         </p>        
         
     </form>
-    <br>
-
-    <a href="{{url_for('history')}}" class="btn btn-info"
-    style="color:white; background-color: #007bff; border-color: #007bff;"
-    >View history</a>
+    
 
     <script src="{{ url_for('static', filename='js/wheel.js') }}"></script>
 </body>
