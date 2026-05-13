@@ -27,7 +27,6 @@ def foods():
     
     meals = get_meals_by_area(area)
 
-    # only keep first 5 meals
     chosen_meals = meals
 
     return render_template("foods.html", area=area, meals=chosen_meals)
@@ -39,9 +38,13 @@ def recipe(meal_id):
     meal = get_meal_details(meal_id)
     mealinstr = get_meal_instructions(meal)
     print(mealinstr)
+    # Phoenix, adds the recipe being accessed to the history dict
     add_history(meal_id, meal)
     print(meal)
     return render_template("recipe.html", meal=meal, instructions = get_meal_instructions(meal))
+
+# Phoenix Caine, route that runs when the user clicks "view history"
+# Passes the dictionary of stored meal ids into the template
 
 @app.route("/history")
 def history():
