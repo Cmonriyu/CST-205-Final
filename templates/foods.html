@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Foods from {{ area }}</title>
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
@@ -10,18 +12,26 @@
         <p>Choose a meal to see recipe details.</p>
     
         {% for meal in meals %}
-            <div>
-                <h3>{{ meal.strMeal }}</h3>
+            <div class="container mb-4">
+                <div class="card mt-4">
+                    <div class="card-body" style="background-color: aliceblue;">
+                        <div style="display: inline-block">
+                            <img src="{{ meal.strMealThumb }}" class="img-thumbnail" width="50%"/>
+                        </div>
 
-                <img src="{{ meal.strMealThumb }}" width="250">
-
-                <p>
-                    <a href="{{ url_for('recipe', meal_id=meal.idMeal) }}">
-                        View Recipe
-                    </a>
-                </p>
+                        <span style="display: inline-block; text-align: center;">
+                            <h3>{{ meal.strMeal }}</h3>
+                            <h3>Culture: {{ meal.strArea }}</h3>
+                            <h3>Category: {{ meal.strCategory }}</h3>
+                            <a href="{{url_for('recipe', meal_id=meal.idMeal)}}" 
+                            style= "color: white;" class="btn btn-info"
+                            >View Recipe</a>
+                        </span>
+                        
+                        <br>
+                    </div>
+                </div>
             </div>
-            <hr>
         {% endfor %}
     {% else %}
         <p>No meals available</p>
@@ -29,7 +39,16 @@
 
     
     <p>
-        <a href="{{ url_for('home') }}">Go Back</a>
+        <div class="container mb-4">
+            <div class="card mt-4">
+                <div class="card-body"  style="background-color: aliceblue;">
+                    <a href="{{url_for('home')}}" style="color: white;"
+                    class="btn btn-info"
+                    >Go Back</a>
+                    <br>
+                </div>
+            </div>
+        </div>
     </p>
 
 </body>

@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>{{ meal.strMeal }}</title>
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
@@ -26,18 +28,21 @@
 
     {% if meal.strYoutube %}
         <p>
-            <a href="{{ meal.strYoutube }}">Watch Recipe Video</a>
+            <a href="{{ meal.strYoutube }}" style="color: white;"
+                class="btn btn-info" >Watch Recipe Video</a>
         </p>
     {% endif %}
 
     {% if meal.strSource %}
         <p>
-            <a href="{{ meal.strSource }}">Recipe Source</a>
+            <a href="{{ meal.strSource }}" style="color: white;"
+                class="btn btn-info" >Recipe Source</a>
         </p>
     {% endif %}
 
     <p>
-        <a href="{{ url_for('home') }}">Back to Home</a>
+        <a href="{{ url_for('home') }}" style="color: white;"
+            class="btn btn-info" >Back to Home</a>
     </p>
 
 </body>

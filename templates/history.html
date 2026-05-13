@@ -3,19 +3,9 @@
 <head>
     <title>Viewed Recipe History</title>
     {{ bootstrap.load_css() }}
-    <style>
-        h1 {text-align: center;
-            padding: 25px;
-            font-family: 'Courier New', Courier, monospace;
-            background-color: aliceblue;
-        }
-        h3{
-            font-family: 'Courier New', Courier, monospace;
-            font-size: x-large;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body style="background-color: burlywood;">
+<body>
 
     <h1>Viewed Recipes</h1>
 
@@ -30,12 +20,12 @@
                             </div>
 
                             <span style="display: inline-block; text-align: center;">
-                                <a href="{{url_for('recipe', meal_id=key)}}" 
-                                style="font-family: 'Courier New', Courier, monospace;
-                                font-size: x-large;"
-                                >{{value.strMeal}}</a>
+                                <h3>{{ value.strMeal }}</h3>
                                 <h3>Culture: {{ value.strArea }}</h3>
                                 <h3>Category: {{ value.strCategory }}</h3>
+                                <a href="{{url_for('recipe', meal_id=key)}}" 
+                                style="color: white;" class="btn btn-info"
+                                >View Recipe</a>
                             </span>
                             
                             <br>
@@ -50,8 +40,7 @@
         <div class="container mb-4">
             <div class="card mt-4">
                 <div class="card-body"  style="background-color: aliceblue;">
-                    <a href="{{url_for('home')}}" style="font-family: 'Courier New', Courier, monospace;
-                    background-color: burlywood; border-color: burlywood;"
+                    <a href="{{url_for('home')}}" style="color: white;"
                     class="btn btn-info"
                     >Go Back</a>
                     <br>
