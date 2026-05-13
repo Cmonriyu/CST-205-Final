@@ -1,5 +1,7 @@
 # Daniel Medina
 # CST 205 Final Project
+#5/13/26
+#this is for the app with our routes, connections to index, recipie html files, and history and category.
 # Culture and Food Recipe Finder
 
 from flask import Flask, render_template, request, url_for
