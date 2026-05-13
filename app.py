@@ -25,7 +25,7 @@ def foods():
     meals = get_meals_by_area(area)
 
     # only keep first 5 meals
-    chosen_meals = meals[:5]
+    chosen_meals = meals
 
     return render_template("foods.html", area=area, meals=chosen_meals)
 
@@ -36,7 +36,7 @@ def recipe(meal_id):
     mealinstr = get_meal_instructions(meal)
     print(mealinstr)
     add_history(meal_id, meal)
-    print(get_meal_instructions(meal))
+    print(meal)
     return render_template("recipie.html", meal=meal, instructions = get_meal_instructions(meal))
 
 @app.route("/history")
