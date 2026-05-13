@@ -31,11 +31,11 @@
 
 .option:hover {
     background-color: #e9ecef;
-    color: #007bff;
+    color: burlywood;
 }
 
 .option.selected {
-    background-color: #007bff;
+    background-color: chocolate;
     color: white;
     font-weight: bold;
     box-shadow: 0 0 10px rgba(0,123,255,0.5);
@@ -45,7 +45,7 @@
     display: block;
     margin: 15px auto;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: burlywood;
     color: white;
     border: none;
     border-radius: 5px;
@@ -55,7 +55,7 @@
 }
 
 #spin:hover {
-    background-color: #0056b3;
+    background-color: rgb(196, 145, 79);
     transform: scale(1.05);
 }
 

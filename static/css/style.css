@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color:#f8f9fa;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: burlywood;
     color: #333;
     margin: 0;
     padding: 20px;
@@ -45,7 +45,7 @@ form p {
 }
 
 input[type="submit"] {
-    background-color: #28a745;
+    background-color: chocolate;
     color: white;
     border: none;
     padding: 12px 24px;
@@ -58,11 +58,11 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #218838;
+    background-color: rgb(171, 83, 20);
 }
 
 .btn {
-    background-color: #4CAF50;
+    background-color: burlywood;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -73,5 +73,5 @@ input[type="submit"]:hover {
 
 
 .btn:hover {
-    background-color: #45a049;
+    background-color: rgb(211, 165, 105);
 }
