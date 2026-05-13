@@ -3,52 +3,88 @@
 <head>
     <title>Viewed Recipe History</title>
     {{ bootstrap.load_css() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        h1 {
+            text-align: center;
+            padding: 25px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: aliceblue;
+        }
+
+        h3 {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: x-large;
+        }
+
+        a, p {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
 </head>
-<body>
+
+<body style="background-color: burlywood;">
 
     <h1>Viewed Recipes</h1>
 
-    <p>
-        <ul>
-            {% for key, value in history.items() %}
-                <div class="container mb-4">
-                    <div class="card mt-4">
-                        <div class="card-body" style="background-color: aliceblue;">
-                            <div style="display: inline-block">
-                                <img src="{{ value.strMealThumb }}" class="img-thumbnail" width="50%"/>
-                            </div>
+    {% if history %}
 
-                            <span style="display: inline-block; text-align: center;">
-                                <h3>{{ value.strMeal }}</h3>
-                                <h3>Culture: {{ value.strArea }}</h3>
-                                <h3>Category: {{ value.strCategory }}</h3>
-                                <a href="{{url_for('recipe', meal_id=key)}}" 
-                                style="color: white;" class="btn btn-info"
-                                >View Recipe</a>
-                            </span>
-                            
-                            <br>
+        {% for key, value in history.items() %}
+            <div class="container mb-4">
+                <div class="card mt-4">
+                    <div class="card-body" style="background-color: aliceblue;">
+
+                        <div style="display: inline-block; vertical-align: top;">
+                            <img src="{{ value.strMealThumb }}"
+                                 class="img-thumbnail"
+                                 width="300">
                         </div>
+
+                        <div style="display: inline-block; margin-left: 20px; vertical-align: top;">
+
+                            <a href="{{ url_for('recipe', meal_id=key) }}"
+                               style="font-size: x-large;">
+                                {{ value.strMeal }}
+                            </a>
+
+                            <h3>Culture: {{ value.strArea }}</h3>
+
+                            <h3>Category: {{ value.strCategory }}</h3>
+
+                        </div>
+
                     </div>
                 </div>
-                
-            {% endfor %}
-        </ul>
-    </p>
-    <p>
+            </div>
+        {% endfor %}
+
+    {% else %}
+
         <div class="container mb-4">
             <div class="card mt-4">
-                <div class="card-body"  style="background-color: aliceblue;">
-                    <a href="{{url_for('home')}}" style="color: white;"
-                    class="btn btn-info"
-                    >Go Back</a>
-                    <br>
+                <div class="card-body" style="background-color: aliceblue;">
+                    <p>No viewed recipes yet.</p>
                 </div>
             </div>
         </div>
-    </p>
 
-    
+    {% endif %}
+
+    <div class="container mb-4">
+        <div class="card mt-4">
+            <div class="card-body" style="background-color: aliceblue;">
+
+                <a href="{{ url_for('home') }}"
+                   class="btn btn-info"
+                   style="font-family: 'Courier New', Courier, monospace;
+                          background-color: burlywood;
+                          border-color: burlywood;">
+                    Go Back
+                </a>
+
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

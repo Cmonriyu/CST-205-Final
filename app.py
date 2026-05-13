@@ -37,7 +37,7 @@ def recipe(meal_id):
     print(mealinstr)
     add_history(meal_id, meal)
     print(meal)
-    return render_template("recipie.html", meal=meal, instructions = get_meal_instructions(meal))
+    return render_template("recipe.html", meal=meal, instructions = get_meal_instructions(meal))
 
 @app.route("/history")
 def history():
