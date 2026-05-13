@@ -5,16 +5,19 @@
 from flask import Flask, render_template, request, url_for
 from flask_bootstrap import Bootstrap5
 from api_helpers import get_areas, get_meals_by_area, get_meal_details, areas_with_meals, get_meal_instructions, add_history, get_history, get_meals_by_catagory
+# Daniel Medina EXPLANATION: FLASK CREATES THE WEB APPLICATION, RENDER TEMPLATE LOADS THE HTML FILES FROM TEMPLATES/
+#Daniel Medina REQUEST GETS FORM DATA SUBMITTED BY USER
+#Daniel Medina URL_FOR CREATES CORRECT FLASK LINKS
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
 
-
+#Daniel Medina set up our routes
 @app.route("/")
 def home():
     areas = get_areas()
     return render_template("index.html", areas=areas)
- 
+ #
 
 @app.route("/foods", methods=["GET", "POST"])
 def foods():
@@ -28,7 +31,8 @@ def foods():
     chosen_meals = meals
 
     return render_template("foods.html", area=area, meals=chosen_meals)
-
+#daniel Medina home route runs when user visits homepage, calls api helper function, then sends culture list to index
+#food recieves selected culture uses request form area then gets meals for that culture through api, list slice then to get 5 meals, then send results to food.html.
 
 @app.route("/recipe/<meal_id>")
 def recipe(meal_id):
