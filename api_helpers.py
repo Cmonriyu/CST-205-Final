@@ -79,19 +79,6 @@ def get_history():
     return history
 
 
-
-#     # if line[0] == "1" or line[0].lower() == "step 1":
-
-    # for line in lines:
-    #     if line.lower().strip() == str(count) or line.lower().strip() == "step " + str(count):
-    #         line = "Step " + str(count) + ". new"
-    #         count += 1
-    #     else:
-    #         line = f"Step {count}. {line}"
-    #         count += 1
-
-    return newlines
-
 def get_meals_by_catagory(meal):
 
     catlist = []
