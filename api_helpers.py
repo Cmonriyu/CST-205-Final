@@ -3,6 +3,7 @@
 # Created by Riyu, Grabs information from MEALDB using requests. History request created by Phoenix.
 
 import requests
+import pickle
 
 AREA_LIST_URL = "https://www.themealdb.com/api/json/v1/1/list.php?a=list"
 FILTER_BY_AREA_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?a="
@@ -74,15 +75,24 @@ def get_meal_instructions(meal):
 
     return newlines
 
+# Phoenix, adds the specified data to the history dictionary
 def add_history(id, meal):
     if id not in history:
         history[id]=meal
+    with open('pickled', 'wb') as history_storage:
+        pickle.dump(history, history_storage)
 
+# Phoenix, loads the pickled file of recipe history and returns it
 def get_history():
+    with open('pickled', 'rb') as history_storage:
+        history = pickle.load(history_storage)
     return history
 
+def clear_history():
+    history = {}
+    with open('pickled', 'wb') as history_storage:
+        pickle.dump(history, history_storage)
 
-# Gathers all meals with belonging to a certain catagory
 def get_meals_by_catagory(meal):
 
     catlist = []

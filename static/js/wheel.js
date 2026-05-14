@@ -1,3 +1,11 @@
+/*
+CST-205 Final Project
+05/13/2026
+The scroll wheel and random spin functionality for the cuisine selector.
+Dayshaun Ly
+*/
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const wheel = document.getElementById('wheel');
     const options = document.querySelectorAll('.option');

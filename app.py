@@ -1,16 +1,19 @@
 # Daniel Medina
 # CST 205 Final Project
+#5/13/26
+#this is for the app with our routes, connections to index, recipie html files, and history and category.
 # Culture and Food Recipe Finder
 
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, redirect
 from flask_bootstrap import Bootstrap5
-from api_helpers import get_areas, get_meals_by_area, get_meal_details, areas_with_meals, get_meal_instructions, add_history, get_history, get_meals_by_catagory
+from api_helpers import get_areas, get_meals_by_area, get_meal_details, areas_with_meals, get_meal_instructions, add_history, get_history, get_meals_by_catagory, clear_history
 # Daniel Medina EXPLANATION: FLASK CREATES THE WEB APPLICATION, RENDER TEMPLATE LOADS THE HTML FILES FROM TEMPLATES/
 #Daniel Medina REQUEST GETS FORM DATA SUBMITTED BY USER
 #Daniel Medina URL_FOR CREATES CORRECT FLASK LINKS
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
+not_first = False
 
 #Daniel Medina set up our routes
 @app.route("/")
@@ -50,6 +53,12 @@ def recipe(meal_id):
 def history():
     his = get_history()
     return render_template("history.html", history=his)
+
+# Phoenix Caine, clears the history then redirects
+@app.route("/cleared")
+def clear():
+    clear_history()
+    return redirect(url_for('home'))
 
 @app.route("/catagory")
 def catagory(meal_id):
