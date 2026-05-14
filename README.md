@@ -13,3 +13,6 @@ May 13, 2026
 [Link to GitHub repository](https://github.com/Cmonriyu/CST-205-Final)
 
 *Future work*
+Add Catagories Link
+History Link Saves Sessions
+Ratings

@@ -1,5 +1,6 @@
 # api_helpers.py
 # helper functions for TheMealDB API
+# Created by Riyu, Grabs information from MEALDB using requests. History request created by Phoenix.
 
 import requests
 
@@ -8,7 +9,7 @@ FILTER_BY_AREA_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?a="
 LOOKUP_MEAL_URL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="
 history = {}
 
-
+# Gets Areas
 def get_areas():
     response = requests.get(AREA_LIST_URL)
     data = response.json()
@@ -20,7 +21,7 @@ def get_areas():
 
     return areas
 
-
+# Gets all meals by a certain area
 def get_meals_by_area(area):
     response = requests.get(FILTER_BY_AREA_URL + area)
     data = response.json()
@@ -33,7 +34,7 @@ def get_meals_by_area(area):
 
     return meals
 
-
+# Gets meal details 
 def get_meal_details(meal_id):
     response = requests.get(LOOKUP_MEAL_URL + meal_id)
     data = response.json()
@@ -43,6 +44,7 @@ def get_meal_details(meal_id):
 
     return None
 
+# Gets only areas with meals, slow too many api requests
 def areas_with_meals():
     areasList = get_areas()
     areasWithMeals = []
@@ -52,6 +54,7 @@ def areas_with_meals():
             areasWithMeals.append(area)
     return areasWithMeals
 
+# Splits instructions, and determines how it starts to properly add steps correctly
 def get_meal_instructions(meal):
     lines = [line for line in meal["strInstructions"].splitlines() if line.strip()]
     count = 1
@@ -79,19 +82,7 @@ def get_history():
     return history
 
 
-
-#     # if line[0] == "1" or line[0].lower() == "step 1":
-
-    # for line in lines:
-    #     if line.lower().strip() == str(count) or line.lower().strip() == "step " + str(count):
-    #         line = "Step " + str(count) + ". new"
-    #         count += 1
-    #     else:
-    #         line = f"Step {count}. {line}"
-    #         count += 1
-
-    return newlines
-
+# Gathers all meals with belonging to a certain catagory
 def get_meals_by_catagory(meal):
 
     catlist = []
