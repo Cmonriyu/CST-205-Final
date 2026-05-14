@@ -14,7 +14,9 @@ May 13, 2026
 
 *Future work*
 
-
+Ratings
+Catagories Page
+Even more Randomizer options
 
 **Trello**
 
